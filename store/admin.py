@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.utils.html import format_html
-from .models import Product
+from .models import Product, Variation
 
 
 class ProductAdmin(admin.ModelAdmin):
@@ -17,3 +17,13 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Product, ProductAdmin)
+
+class VariationAdmin(admin.ModelAdmin):
+    list_display = ('product', 'variation_category', 'variation_value', 'is_active', 'created_date')
+    list_editable = ('is_active',)
+    list_display_links = ('product',)
+    search_fields = ('product', 'variation_category')
+    list_filter = ('product', 'variation_category', 'variation_value')
+    list_per_page = 25
+
+admin.site.register(Variation, VariationAdmin)
