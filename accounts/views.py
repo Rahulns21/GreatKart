@@ -29,7 +29,7 @@ def register(request):
                 user.phone_number = phone_number
                 user.save()
 
-                # USER ACTIVATION
+                # USER ACCOUNT ACTIVATION
                 current_site = get_current_site(request)
                 mail_subject = 'Please activate your greatkart account'
                 message = render_to_string('accounts/account_verification_email.html', {
